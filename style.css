@@ -1,0 +1,498 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #050505;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* NAVBAR */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 76px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid #1b1b1b;
+
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 7px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    color: #777;
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+.nav-button {
+    padding: 11px 20px;
+
+    color: #000;
+    background: #fff;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    border-radius: 4px;
+
+    transition: 0.25s;
+}
+
+.nav-button:hover {
+    background: #ccc;
+    transform: translateY(-2px);
+}
+
+
+/* HERO */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #222 0%,
+            #0b0b0b 30%,
+            #050505 70%
+        );
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    opacity: 0.025;
+
+    filter: blur(130px);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.eyebrow {
+    color: #666;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    letter-spacing: 7px;
+}
+
+.hero h1 {
+    margin-top: 20px;
+
+    font-size: clamp(90px, 17vw, 200px);
+
+    font-weight: 900;
+
+    letter-spacing: 25px;
+
+    margin-right: -25px;
+}
+
+.hero p {
+    margin: 10px 0 35px;
+
+    color: #888;
+
+    font-size: 16px;
+
+    letter-spacing: 4px;
+}
+
+
+/* BUTTONS */
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+}
+
+.button {
+    display: inline-block;
+
+    padding: 14px 28px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    border-radius: 4px;
+
+    transition: 0.25s;
+}
+
+.primary {
+    background: white;
+    color: black;
+}
+
+.primary:hover {
+    background: #ccc;
+    transform: translateY(-3px);
+}
+
+.secondary {
+    color: white;
+
+    border: 1px solid #333;
+}
+
+.secondary:hover {
+    border-color: white;
+    transform: translateY(-3px);
+}
+
+
+/* SECTIONS */
+
+.section {
+    padding: 120px 8%;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    margin-bottom: 15px;
+}
+
+.section-heading span {
+    color: #444;
+
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.section-heading h2 {
+    font-size: 38px;
+}
+
+.section-description {
+    color: #666;
+
+    margin-bottom: 45px;
+}
+
+.about-text {
+    max-width: 800px;
+
+    color: #888;
+
+    font-size: 17px;
+
+    line-height: 1.9;
+}
+
+
+/* TRYOUTS */
+
+.tryout-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 18px;
+}
+
+.tryout-card {
+    position: relative;
+
+    min-height: 210px;
+
+    padding: 35px;
+
+    background: #0b0b0b;
+
+    border: 1px solid #1b1b1b;
+
+    transition: 0.3s;
+}
+
+.tryout-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #555;
+
+    background: #101010;
+}
+
+.card-number {
+    color: #444;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    margin-bottom: 30px;
+}
+
+.tryout-card h3 {
+    font-size: 22px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 12px;
+}
+
+.tryout-card p {
+    color: #666;
+
+    line-height: 1.6;
+}
+
+.open {
+    position: absolute;
+
+    right: 25px;
+    bottom: 25px;
+
+    color: #888;
+
+    font-size: 9px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+
+/* ROSTER */
+
+.roster-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+.roster-card {
+    padding: 35px;
+
+    background: #0b0b0b;
+
+    border: 1px solid #1b1b1b;
+
+    transition: 0.3s;
+}
+
+.roster-card:hover {
+    transform: translateY(-5px);
+    border-color: #555;
+}
+
+.roster-card h3 {
+    margin-bottom: 10px;
+
+    letter-spacing: 2px;
+}
+
+.roster-card p {
+    color: #666;
+}
+
+
+/* NEWS */
+
+.news-card {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 35px;
+
+    background: #0b0b0b;
+
+    border: 1px solid #1b1b1b;
+}
+
+.news-tag {
+    color: #555;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    letter-spacing: 3px;
+}
+
+.news-card h3 {
+    margin: 12px 0;
+
+    font-size: 22px;
+}
+
+.news-card p {
+    color: #666;
+}
+
+
+/* JOIN */
+
+.join {
+    padding: 140px 8%;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #181818,
+            #070707 65%
+        );
+
+    border-top: 1px solid #151515;
+    border-bottom: 1px solid #151515;
+}
+
+.join h2 {
+    margin: 20px 0 12px;
+
+    font-size: clamp(40px, 7vw, 70px);
+
+    letter-spacing: 3px;
+}
+
+.join p {
+    color: #666;
+
+    margin-bottom: 30px;
+}
+
+
+/* FOOTER */
+
+footer {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 35px 8%;
+
+    color: #444;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+}
+
+footer strong {
+    color: #aaa;
+
+    letter-spacing: 5px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .nav-button {
+        display: block;
+    }
+
+    .hero h1 {
+        font-size: 75px;
+
+        letter-spacing: 12px;
+
+        margin-right: -12px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .tryout-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .roster-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .news-card {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 25px;
+    }
+
+    footer {
+        flex-direction: column;
+
+        gap: 15px;
+    }
+}

@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RIFT | Official</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #050505;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 75px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid #1c1c1c;
+
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 900;
+            letter-spacing: 6px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            position: relative;
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #252525 0%,
+                    #0b0b0b 35%,
+                    #050505 70%
+                );
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 700px;
+            height: 700px;
+
+            border-radius: 50%;
+
+            background: white;
+            opacity: 0.025;
+
+            filter: blur(120px);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .small-title {
+            color: #777;
+            font-size: 13px;
+            letter-spacing: 7px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(90px, 16vw, 190px);
+            letter-spacing: 25px;
+            margin-right: -25px;
+            font-weight: 900;
+        }
+
+        .hero p {
+            color: #999;
+            font-size: 18px;
+            margin: 15px 0 35px;
+            letter-spacing: 2px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 15px 32px;
+            border-radius: 5px;
+
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 13px;
+
+            transition: 0.25s;
+        }
+
+        .primary {
+            background: white;
+            color: black;
+        }
+
+        .primary:hover {
+            transform: translateY(-3px);
+            background: #ddd;
+        }
+
+        .secondary {
+            border: 1px solid #444;
+            color: white;
+        }
+
+        .secondary:hover {
+            border-color: white;
+            transform: translateY(-3px);
+        }
+
+        /* GENERAL SECTIONS */
+
+        section {
+            padding: 110px 8%;
+        }
+
+        .section-title {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            color: #777;
+            margin-bottom: 50px;
+        }
+
+        /* CARDS */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            padding: 35px;
+
+            background: #0d0d0d;
+
+            border: 1px solid #1c1c1c;
+            border-radius: 8px;
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: #555;
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .card p {
+            color: #777;
+            line-height: 1.6;
+        }
+
+        /* ABOUT */
+
+        .about-text {
+            max-width: 800px;
+            color: #888;
+            line-height: 1.9;
+            font-size: 16px;
+        }
+
+        /* TRYOUTS */
+
+        .tryout-card {
+            position: relative;
+            min-height: 190px;
+        }
+
+        .status {
+            display: inline-block;
+
+            margin-bottom: 25px;
+
+            padding: 5px 10px;
+
+            border: 1px solid #333;
+            border-radius: 20px;
+
+            color: #aaa;
+            font-size: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* STATS */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 35px 20px;
+
+            background: #0b0b0b;
+            border: 1px solid #1c1c1c;
+            border-radius: 8px;
+        }
+
+        .stat h2 {
+            font-size: 38px;
+            margin-bottom: 8px;
+        }
+
+        .stat p {
+            color: #666;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+
+        /* EXTRA RIFT SECTIONS */
+
+        .list-card ul {
+            list-style: none;
+            color: #777;
+            line-height: 2;
+        }
+
+        .list-card li::before {
+            content: "— ";
+            color: #aaa;
+        }
+
+        .event-date {
+            display: inline-block;
+            margin-bottom: 18px;
+            color: #aaa;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .highlight {
+            border-color: #333;
+        }
+
+        .highlight h3 {
+            font-size: 20px;
+        }
+
+        /* JOIN */
+
+        .join {
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #171717,
+                    #080808 65%
+                );
+
+            border-top: 1px solid #151515;
+            border-bottom: 1px solid #151515;
+        }
+
+        .join h2 {
+            font-size: 52px;
+            margin-bottom: 15px;
+        }
+
+        .join p {
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 35px 8%;
+
+            display: flex;
+            justify-content: space-between;
+
+            color: #555;
+            font-size: 12px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 75px;
+                letter-spacing: 12px;
+                margin-right: -12px;
+            }
+
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .join h2 {
+                font-size: 38px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav>
+
+        <div class="logo">
+            RIFT
+        </div>
+
+        <div class="nav-links">
+            <a href="#home">HOME</a>
+            <a href="#about">ABOUT</a>
+            <a href="#tryouts">TRYOUTS</a>
+            <a href="#roster">ROSTER</a>
+            <a href="#news">NEWS</a>
+            <a href="#rules">RULES</a>
+            <a href="#events">EVENTS</a>
+            <a href="#join">JOIN</a>
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="small-title">
+                EST. 2026
+            </div>
+
+            <h1>RIFT</h1>
+
+            <p>
+                RISE. ADAPT. DOMINATE.
+            </p>
+
+            <div class="buttons">
+
+                <a
+                    href="https://discord.gg/sFWj6X98NN"
+                    class="btn primary"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    JOIN RIFT
+                </a>
+
+                <a
+                    href="#tryouts"
+                    class="btn secondary"
+                >
+                    VIEW TRYOUTS
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <section id="about">
+
+        <h2 class="section-title">
+            WHO WE ARE
+        </h2>
+
+        <p class="section-subtitle">
+            Built different. Built together.
+        </p>
+
+        <p class="about-text">
+            RIFT is a competitive gaming community built around
+            teamwork, skill, discipline and community. We bring
+            together players who want to improve, compete and
+            become part of something bigger.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         VALUES
+    ========================= -->
+
+    <section>
+
+        <h2 class="section-title">
+            THE RIFT STANDARD
+        </h2>
+
+        <p class="section-subtitle">
+            What we stand for.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>01 — SKILL</h3>
+                <p>
+                    Constant improvement and dedication
+                    to your role.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>02 — TEAMWORK</h3>
+                <p>
+                    Work together, communicate and
+                    support the team.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>03 — RESPECT</h3>
+                <p>
+                    Respect your teammates, opponents
+                    and the community.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         TRYOUTS
+    ========================= -->
+
+    <section id="tryouts">
+
+        <h2 class="section-title">
+            CURRENT TRYOUTS
+        </h2>
+
+        <p class="section-subtitle">
+            Think you have what it takes?
+        </p>
+
+        <div class="cards">
+
+            <div class="card tryout-card">
+
+                <span class="status">
+                    OPEN
+                </span>
+
+                <h3>
+                    SNIPER
+                </h3>
+
+                <p>
+                    Precision, patience and accuracy.
+                    Prove your long-range ability.
+                </p>
+
+            </div>
+
+
+            <div class="card tryout-card">
+
+                <span class="status">
+                    OPEN
+                </span>
+
+                <h3>
+                    CROSSBOW
+                </h3>
+
+                <p>
+                    Test your aim, timing and consistency
+                    with the crossbow.
+                </p>
+
+            </div>
+
+
+            <div class="card tryout-card">
+
+                <span class="status">
+                    OPEN
+                </span>
+
+                <h3>
+                    KNIFE
+                </h3>
+
+                <p>
+                    Speed, movement and close-range
+                    precision.
+                </p>
+
+            </div>
+
+
+            <div class="card tryout-card">
+
+                <span class="status">
+                    OPEN
+                </span>
+
+                <h3>
+                    DEFAULT LOADOUT
+                </h3>
+
+                <p>
+                    Show what you can do with the
+                    standard loadout.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         STATS
+    ========================= -->
+
+    <section>
+
+        <div class="stats">
+
+            <div class="stat">
+                <h2>RIFT</h2>
+                <p>COMMUNITY</p>
+            </div>
+
+            <div class="stat">
+                <h2>2026</h2>
+                <p>ESTABLISHED</p>
+            </div>
+
+            <div class="stat">
+                <h2>4</h2>
+                <p>ACTIVE TRYOUTS</p>
+            </div>
+
+            <div class="stat">
+                <h2>24/7</h2>
+                <p>COMMUNITY</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ROSTER
+    ========================= -->
+
+    <section id="roster">
+
+        <h2 class="section-title">
+            RIFT ROSTER
+        </h2>
+
+        <p class="section-subtitle">
+            The people behind RIFT.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>
+                    COMMAND
+                </h3>
+
+                <p>
+                    Leadership, strategy and
+                    organization.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    STAFF
+                </h3>
+
+                <p>
+                    Operations, moderation and
+                    public affairs.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    MEMBERS
+                </h3>
+
+                <p>
+                    The players who make RIFT
+                    what it is.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         NEWS
+    ========================= -->
+
+    <section id="news">
+
+        <h2 class="section-title">
+            LATEST FROM RIFT
+        </h2>
+
+        <p class="section-subtitle">
+            News, announcements and updates.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>
+                    TRYOUTS
+                </h3>
+
+                <p>
+                    Applications are currently open
+                    for selected RIFT roles.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    COMMUNITY
+                </h3>
+
+                <p>
+                    Join the official RIFT Discord
+                    to stay updated.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    MORE COMING
+                </h3>
+
+                <p>
+                    New events, opportunities and
+                    updates are on the way.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         ACHIEVEMENTS
+    ========================= -->
+
+    <section id="achievements">
+
+        <h2 class="section-title">
+            RIFT ACHIEVEMENTS
+        </h2>
+
+        <p class="section-subtitle">
+            Built through competition, teamwork and dedication.
+        </p>
+
+        <div class="cards">
+
+            <div class="card highlight">
+                <h3>ESTABLISHED</h3>
+                <p>
+                    RIFT was established in 2026 with the goal
+                    of building a competitive community.
+                </p>
+            </div>
+
+            <div class="card highlight">
+                <h3>ACTIVE TRYOUTS</h3>
+                <p>
+                    Multiple competitive roles are currently
+                    available for players to prove themselves.
+                </p>
+            </div>
+
+            <div class="card highlight">
+                <h3>GROWING COMMUNITY</h3>
+                <p>
+                    RIFT continues to grow through new members,
+                    events and competitive opportunities.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         RULES
+    ========================= -->
+
+    <section id="rules">
+
+        <h2 class="section-title">
+            RIFT RULES
+        </h2>
+
+        <p class="section-subtitle">
+            The standard every member is expected to follow.
+        </p>
+
+        <div class="cards">
+
+            <div class="card list-card">
+                <h3>01 — RESPECT</h3>
+                <ul>
+                    <li>Respect teammates and opponents.</li>
+                    <li>No unnecessary harassment or toxicity.</li>
+                    <li>Represent RIFT responsibly.</li>
+                </ul>
+            </div>
+
+            <div class="card list-card">
+                <h3>02 — FAIR PLAY</h3>
+                <ul>
+                    <li>Play honestly and follow game rules.</li>
+                    <li>No cheating or exploiting.</li>
+                    <li>Keep competition fair.</li>
+                </ul>
+            </div>
+
+            <div class="card list-card">
+                <h3>03 — TEAMWORK</h3>
+                <ul>
+                    <li>Communicate with your team.</li>
+                    <li>Support your teammates.</li>
+                    <li>Take feedback and keep improving.</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         EVENTS
+    ========================= -->
+
+    <section id="events">
+
+        <h2 class="section-title">
+            RIFT EVENTS
+        </h2>
+
+        <p class="section-subtitle">
+            Competition, community and opportunities.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <span class="event-date">COMING SOON</span>
+                <h3>RIFT TOURNAMENT</h3>
+                <p>
+                    Competitive events where RIFT players
+                    can put their skills to the test.
+                </p>
+            </div>
+
+            <div class="card">
+                <span class="event-date">COMING SOON</span>
+                <h3>COMMUNITY EVENT</h3>
+                <p>
+                    Community-focused events designed to
+                    bring RIFT members together.
+                </p>
+            </div>
+
+            <div class="card">
+                <span class="event-date">UPDATES</span>
+                <h3>MORE EVENTS</h3>
+                <p>
+                    New events and opportunities will be
+                    announced through the official Discord.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ALLIES
+    ========================= -->
+
+    <section id="allies">
+
+        <h2 class="section-title">
+            RIFT NETWORK
+        </h2>
+
+        <p class="section-subtitle">
+            Connections that help the community grow.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>ALLIES</h3>
+                <p>
+                    Official allies and partnered communities
+                    can be listed here as RIFT expands.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>PARTNERS</h3>
+                <p>
+                    Community partnerships and collaborations
+                    can be announced here.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>OPEN NETWORK</h3>
+                <p>
+                    More relationships, collaborations and
+                    opportunities are on the way.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         JOIN
+    ========================= -->
+
+    <section class="join" id="join">
+
+        <h2>
+            READY TO JOIN RIFT?
+        </h2>
+
+        <p>
+            Enter the community and start your journey.
+        </p>
+
+        <a
+            href="https://discord.gg/sFWj6X98NN"
+            class="btn primary"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            JOIN THE DISCORD
+        </a>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <div>
+            © 2026 RIFT
+        </div>
+
+        <div>
+            RISE. ADAPT. DOMINATE.
+        </div>
+
+    </footer>
+
+</body>
+</html>
